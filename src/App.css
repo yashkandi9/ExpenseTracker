@@ -1,42 +1,183 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+/* Dashboard container */
+.dashboard {
+  padding: 100px;
+  background-color: #f9faff; /* Light background color */
+}
+
+
+.dashboard .landing img {
+  width: 40vh;
+  height: 40vh;
+}
+
+.dashboard .landing{
+  display: flex;
+  justify-content: center;
+  
+}
+
+/* Header styles */
+.dashboard .header {
+  display: flex;
+  justify-content: flex-end; /* Align Login/SignUp buttons to the right */
+  padding: 10px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+/* Login/Sign Up buttons */
+.dashboard .login-signup button {
+  margin-left: 10px;
+  padding: 8px 16px;
+  cursor: pointer;
+  background-color: #f66149; /* Red color */
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+}
+
+.dashboard .login-signup button:hover {
+  background-color: #f29a3c; /* Orange color for hover */
+}
+
+
+
+/* Main content styles */
+.dashboard h1 {
+  font-size: 5rem;
+  color: #090b12; /* Dark color for text */
+}
+
+/* Options container (grid layout) */
+.options {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 2 columns layout */
+  gap: 20px;
+  padding: 20px;
+  grid-template-rows: auto auto;
+  width: 100%;
+  justify-items: center; /* Center items within the grid */
+  margin-top: 30px;
+}
+
+/* Individual option styling */
+.option {
+  background-color: #ffffff; /* White background */
+  padding: 20px;
+  border-radius: 8px;
+  width: 250px; /* Fixed width for square-like appearance */
   text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* Hover effect for options */
+.option:hover {
+  transform: translateY(-5px); /* Slightly lift up on hover */
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+/* Option title styling */
+.option h2 {
+  margin-bottom: 10px;
+  color: #090b12; /* Dark color for titles */
+  font-size: 1.5rem;
+}
+
+/* Option button styling */
+.option button {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #5b4bc4; /* Purple button */
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  width: 100%; /* Ensure button fills the square */
+  font-size: 1rem;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.option button:hover {
+  background-color: #ffc359; /* Yellow color for hover */
+}
+
+/* Message for logged out users */
+.dashboard h2 {
+  font-size: 1.2rem;
+  color: #5b4bc4; /* Purple color */
+}
+
+/* Mobile Responsiveness */
+
+/* For screens smaller than 768px (Tablets and below) */
+@media only screen and (max-width: 768px) {
+  .dashboard {
+    padding: 50px 20px; /* Adjust padding for smaller screens */
   }
-  to {
-    transform: rotate(360deg);
+
+  .dashboard .landing img {
+    width: 30vh; /* Reduce image size */
+    height: 30vh;
+  }
+
+  /* Update the grid to 2 columns */
+  .options {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns layout */
+    gap: 15px;
+  }
+
+  /* Reduce option width on smaller screens */
+  .option {
+    width: 200px; /* Reduce width */
+  }
+
+  /* Option title font size */
+  .option h2 {
+    font-size: 1.3rem;
+  }
+
+  /* Option button font size */
+  .option button {
+    font-size: 0.9rem; /* Smaller button text */
+  }
+
+  .dashboard h1 {
+    font-size: 1.8rem; /* Smaller heading */
+  }
+
+  .dashboard h2 {
+    font-size: 1rem; /* Smaller text for logged out message */
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+/* For screens smaller than 480px (Mobile phones) */
+@media only screen and (max-width: 480px) {
+  .dashboard {
+    padding: 30px 15px; /* Even smaller padding */
   }
-}
 
-.card {
-  padding: 2em;
-}
+  .dashboard .landing img {
+    width: 25vh; /* Even smaller image size */
+    height: 25vh;
+  }
 
-.read-the-docs {
-  color: #888;
+  /* Update the grid to 1 column */
+  .options {
+    grid-template-columns: 1fr; /* 1 column layout for very small screens */
+    gap: 10px;
+  }
+
+  /* Further reduce option width */
+  .option {
+    width: 180px; /* Even smaller option width */
+  }
+
+  .dashboard h1 {
+    font-size: 1.5rem; /* Smaller heading */
+  }
+
+  .dashboard h2 {
+    font-size: 0.9rem; /* Smaller logged out message */
+  }
 }
