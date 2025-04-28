@@ -66,3 +66,25 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 } */
+
+
+/*  -----------------------Uncomment to see CURRENCY CONVERTER (SHUBHAM) CHANGES  ----------------------------- */
+
+/* * {
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f9faff;
+} */
