@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { RefreshCw, ArrowRight } from 'lucide-react';
 import '../styles/CurrencyConverter.css';
-
+// Test change
 const CurrencyConverter = () => {
   const [amount, setAmount] = useState(1);
   const [fromCurrency, setFromCurrency] = useState('USD');
@@ -70,6 +70,7 @@ const CurrencyConverter = () => {
 
   // Helper function to provide country names (simplified example)
   // In a production app, you might want to use a more comprehensive mapping or another API
+
   const getCurrencyCountry = (code, name) => {
     const commonCurrencyCountries = {
       'USD': 'United States',
