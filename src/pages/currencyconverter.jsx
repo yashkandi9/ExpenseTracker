@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { RefreshCw, ArrowRight } from 'lucide-react';
 import '../styles/CurrencyConverter.css';
+
 // Test change
 const CurrencyConverter = () => {
   const [amount, setAmount] = useState(1);
   const [fromCurrency, setFromCurrency] = useState('USD');
-  const [toCurrency, setToCurrency] = useState('EUR');
+  const [toCurrency, setToCurrency] = useState('INR');
   const [exchangeRate, setExchangeRate] = useState(null);
   const [convertedAmount, setConvertedAmount] = useState(null);
   const [currencies, setCurrencies] = useState({});

@@ -11,9 +11,15 @@ import {
   SignedOut,
   useUser
 } from '@clerk/clerk-react';
+import CurrencyConverter from './currencyconverter';
+import { useNavigate } from 'react-router-dom';
+
+
+
 
 const Dashboard = () => {
   const { isSignedIn } = useUser();
+  const navigate = useNavigate();
 
   const defaultOptions = {
     loop: true,
@@ -63,7 +69,7 @@ const Dashboard = () => {
               <div className="option">
                 <h2>Currency Converter</h2>
                 <SiConvertio size={30} color="#5b4bc4"/>
-                <button>Go to Currency Converter</button>
+                <button onClick={() => navigate('/currency-converter')}>Go to Currency Converter</button>
               </div>
               <div className="option">
                 <h2>Stock Analyzer</h2>
