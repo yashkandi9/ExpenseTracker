@@ -11,7 +11,6 @@ import {
   SignedOut,
   useUser
 } from '@clerk/clerk-react';
-import CurrencyConverter from './currencyconverter';
 import { useNavigate } from 'react-router-dom';
 
 
