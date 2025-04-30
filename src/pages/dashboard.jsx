@@ -1,21 +1,19 @@
-import React, { useState } from 'react';
-import Lottie from "react-lottie"
+import React from 'react';
+import Lottie from "react-lottie";
 import animationData from '../assets/a.json';
 import { SiConvertio } from "react-icons/si";
-import { RiStockLine } from "react-icons/ri";
-import { RiMoneyRupeeCircleFill } from "react-icons/ri";
+import { RiStockLine, RiMoneyRupeeCircleFill } from "react-icons/ri";
 import { FaLightbulb } from "react-icons/fa6";
-
-
-
-
+import {
+  SignInButton,
+  SignOutButton,
+  SignedIn,
+  SignedOut,
+  useUser
+} from '@clerk/clerk-react';
 
 const Dashboard = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  const handleLoginLogout = () => {
-    setIsLoggedIn(!isLoggedIn);
-  };
+  const { isSignedIn } = useUser();
 
   const defaultOptions = {
     loop: true,
@@ -28,33 +26,34 @@ const Dashboard = () => {
 
   return (
     <div className="dashboard">
-        
-        <div className='landing'>
-           
-            <h1>Personal Finance Dashboard</h1>
-            <div style={{ width: isLoggedIn ? "300px" : "400px" }}>
-              <Lottie options={defaultOptions} />
-            </div>
+      <div className='landing'>
+        <h1>Personal Finance Dashboard</h1>
+        <div style={{ width: isSignedIn ? "300px" : "400px" }}>
+          <Lottie options={defaultOptions} />
         </div>
-
+      </div>
+      
       <header className="header">
         <div className="login-signup">
-  
-          {isLoggedIn ? (
-            <button onClick={handleLoginLogout}>Logout</button>
-          ) : (
-            <>
-              <button onClick={handleLoginLogout}>Login</button>
+          <SignedOut>
+            <SignInButton>
+              <button>Log In / Sign Up</button>
+            </SignInButton>
+            {/* <SignUpButton>
               <button>Sign Up</button>
-            </>
-          )}
+            </SignUpButton> */}
+          </SignedOut>
+          <SignedIn>
+            <SignOutButton>
+              <button>Logout</button>
+            </SignOutButton>
+          </SignedIn>
         </div>
       </header>
-
+      
       <main>
-        {isLoggedIn ? (
+        {isSignedIn ? (
           <>
-            
             <div className="options">
               <div className="option">
                 <h2>Expense Tracker</h2>
@@ -87,9 +86,3 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
-
-
-
-
-// React Emoticons
-// Clerk (login sign up page)
