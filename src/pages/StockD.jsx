@@ -236,7 +236,7 @@ export default function StockDashboard() {
                                             labelStyle={{ fontWeight: 'bold', marginBottom: '4px', color: '#090b12' }}
                                             itemStyle={{ color: '#5b4bc4' }} // Primary accent for price line
                                             labelFormatter={(label) => `Date: ${new Date(label).toLocaleDateString()}`}
-                                            formatter={(value, name) => [`$${value.toFixed(2)}`, 'Price']} // Format price in tooltip
+                                            formatter={(value, name) => [`${stockData.currency}${value.toFixed(2)}`, 'Price']} // Format price in tooltip
                                         />
 
                                         {/* Line styling: Primary accent color */}
