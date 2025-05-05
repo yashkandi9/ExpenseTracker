@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import "../styles/quiz.css";
 import BackButton from "../components/backbutton";
 import doodle from "/doodles.svg";
+import { TiTick } from "react-icons/ti";
+
 
 const questions = [
   {
@@ -221,7 +223,8 @@ export default function QuizApp() {
           <h2 className="landing-subtitle">Things to know before you start:</h2>
           <ul className="landing-list">
             <li>
-              <span className="check-mark">⭕</span>
+              <span className="check-mark"><TiTick />
+              </span>
               <span>
                 Consider downloading the PDF by clicking on the{" "}
                 <strong>Download PDF</strong> button to gain some knowledge
@@ -229,14 +232,14 @@ export default function QuizApp() {
               </span>
             </li>
             <li>
-              <span className="check-mark">⭕</span>
+              <span className="check-mark"><TiTick /></span>
               <span>
                 In each quiz, you are required to answer 5 random questions from
                 our question bank.
               </span>
             </li>
             <li>
-              <span className="check-mark">⭕</span>
+              <span className="check-mark"><TiTick /></span>
               <span>
                 You will have 30 seconds for each question. If you fail to
                 complete a question in given time, your answer will be

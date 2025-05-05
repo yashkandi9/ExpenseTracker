@@ -53,7 +53,7 @@ body {
 .landing-title {
   font-size: 2.5rem;
   font-weight: bold;
-  color: #4f66e3; /* Adjusted to match image */
+  color: #5b4bc4;
   margin-bottom: 2rem;
   text-align: center;
 }
@@ -84,15 +84,15 @@ body {
 }
 
 .check-mark {
-  color: #ff7575;
+  color: #5b4bc4;
   margin-right: 1rem;
-  font-size: 1.2rem;
+  font-size: 2.2rem;
   flex-shrink: 0;
 }
 
 /* Button Style */
 .btn {
-  background-color: #ff7575; /* Matching coral color in image */
+  background-color: #5b4bc4; /* Matching coral color in image */
   color: white;
   padding: 0.75rem 1.5rem;
   font-size: 1rem;
@@ -115,7 +115,7 @@ body {
 
 /* Countdown Page */
 .countdown-page {
-  background-color: #f87171; /* red-400 */
+  background-color: #5b4bc4; /* red-400 */
   color: white;
   position: fixed;
   top: 0;
