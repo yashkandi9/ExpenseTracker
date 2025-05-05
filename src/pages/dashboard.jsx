@@ -80,7 +80,9 @@ const Dashboard = () => {
               <div className="option">
                 <h2>Quizify</h2>
                 <FaLightbulb size={30} color="#5b4bc4" />
-                <button>Start Quiz</button>
+                <button onClick={() => navigate("/quiz")}>
+                  Start Quiz
+                </button>
               </div>
             </div>
           </>

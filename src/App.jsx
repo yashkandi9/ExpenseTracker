@@ -3,6 +3,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Dashboard from './pages/dashboard';
 import CurrencyConverter from './pages/currencyconverter';
+import QuizApp from './pages/quiz.jsx';
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Dashboard />} />
         <Route path="/currency-converter" element={<CurrencyConverter />} />
+        <Route path="/quiz" element={<QuizApp/>} />
       </Routes>
     </Router>
   );
