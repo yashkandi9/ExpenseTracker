@@ -302,17 +302,16 @@ export default function QuizApp() {
         {q.options.map((opt, i) => (
           <button
             key={i}
-            className={`option-btn ${
-              showAnswer
-                ? opt === q.answer
-                  ? "correct"
-                  : selectedOption === opt
+            className={`option-btn ${showAnswer
+              ? opt === q.answer
+                ? "correct"
+                : selectedOption === opt
                   ? "incorrect"
                   : ""
-                : selectedOption === opt
+              : selectedOption === opt
                 ? "selected"
                 : ""
-            }`}
+              }`}
             onClick={() => {
               if (!showAnswer) {
                 setSelectedOption(opt);
@@ -337,16 +336,16 @@ export default function QuizApp() {
   };
 
   const renderEnd = () => (
-    <div className="end-page">
-      <h1 className="end-title">Quiz Completed!</h1>
-      <p>You have answered all the questions.</p>
-      <p className="end-score">
-        Your Score: {answers.filter((a) => a.selected === a.correct).length} / 5
-      </p>
-      <button className="btn" onClick={() => window.location.reload()}>
-        Try Again
-      </button>
-    </div>
+      <div className="end-page">
+        <h1 className="end-title">Quiz Completed!</h1>
+        <p>You have answered all the questions.</p>
+        <p className="end-score">
+          Your Score: {answers.filter((a) => a.selected === a.correct).length} / 5
+        </p>
+        <button className="btn" onClick={() => window.location.reload()}>
+          Try Again
+        </button>
+      </div>
   );
 
   return (

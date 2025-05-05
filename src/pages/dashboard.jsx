@@ -75,7 +75,7 @@ const Dashboard = () => {
               <div className="option">
                 <h2>Stock Analyzer</h2>
                 <RiStockLine size={30} color="#5b4bc4" />
-                <button>Go to Stock Analyzer</button>
+                <button onClick={() => navigate('/stock-dashboard')}>Go to Stock Analyzer</button>
               </div>
               <div className="option">
                 <h2>Quizify</h2>
