@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../styles/quiz.css";
 import BackButton from "../components/backbutton";
+import doodle from "/doodles.svg";
 
 const questions = [
   {
@@ -263,7 +264,7 @@ export default function QuizApp() {
         </div>
         <div className="landing-illustration">
           <img
-            src="doodles.svg"
+            src={doodle}
             alt="Study illustration"
             className="doodle-image"
           />
