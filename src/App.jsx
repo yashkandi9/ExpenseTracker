@@ -4,6 +4,8 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Dashboard from './pages/dashboard';
 import CurrencyConverter from './pages/currencyconverter';
+import ExpenseManager from './pages/expensemanager';
+import AddExpense from './pages/AddExpense';
 import QuizApp from './pages/quiz.jsx';
 import StockD from './pages/StockD'
 
@@ -12,6 +14,8 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Dashboard />} />
+        <Route path="/ExpenseManager" element={<ExpenseManager />} />
+        <Route path="/add-expense" element={<AddExpense />} />
         <Route path="/currency-converter" element={<CurrencyConverter />} />
         <Route path="/quiz" element={<QuizApp/>} />
         <Route path="/stock-dashboard" element={<StockD />} />
