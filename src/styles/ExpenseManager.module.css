@@ -1,0 +1,56 @@
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .mainGrid {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .leftPanel {
+    flex: 1;
+    min-width: 300px;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+  .rightPanel {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .sectionTitle {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+  
+  .totalSpending {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+  .totalSpendingTitle {
+    font-size: 1rem;
+  }
+  
+  .totalAmount {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  

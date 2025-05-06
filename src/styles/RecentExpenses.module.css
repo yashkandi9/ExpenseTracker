@@ -1,0 +1,16 @@
+.expenseTable {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .expenseTable th,
+  .expenseTable td {
+    border-bottom: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  .expenseTable th {
+    background-color: #f0f0f0;
+    text-align: left;
+  }
+  

@@ -1,0 +1,10 @@
+.totalSpendingBox h2 {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+  }
+  
+  .totalSpendingBox p {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+  }
