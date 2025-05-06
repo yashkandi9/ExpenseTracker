@@ -63,7 +63,7 @@ const Dashboard = () => {
               <div className="option">
                 <h2>Expense Tracker</h2>
                 <RiMoneyRupeeCircleFill size={30} color="#5b4bc4" />
-                <button>Go to Expense Tracker</button>
+                <button onClick={() => navigate("ExpenseManager")}>Go to Expense Tracker</button>
               </div>
               <div className="option">
                 <h2>Currency Converter</h2>
