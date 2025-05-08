@@ -214,7 +214,7 @@ export default function StockDashboard() {
                                         />
                                         <YAxis
                                             tick={{ fontSize: 11, fill: '#4b5563' }} // Explicit style as Recharts applies inline
-                                            tickFormatter={(value) => `$${value.toFixed(0)}`} // Format ticks
+                                            tickFormatter={(value) => `${stockData.currency}${value.toFixed(0)}`} // Format ticks
                                             domain={['auto', 'auto']}
                                             orientation="right"
                                             axisLine={false}

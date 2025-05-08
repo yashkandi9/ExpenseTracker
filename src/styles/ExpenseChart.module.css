@@ -1,6 +1,31 @@
 .chartContainer {
-    width: 100%;
-    max-width: 400px;
-    margin: 0 auto;
-  }
-  
+  max-width: 600px;
+  margin: auto;
+  text-align: center;
+}
+
+.filterContainer {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.filterContainer label {
+  font-size: 0.9rem;
+}
+
+.downloadBtn {
+  padding: 6px 12px;
+  background-color: #7b61ff;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.downloadBtn:hover {
+  background-color: #624dd5;
+}

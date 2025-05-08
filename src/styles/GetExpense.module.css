@@ -1,0 +1,128 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Arial', sans-serif;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #333;
+  font-size: 2rem;
+}
+
+.controlPanel {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+
+.refreshButton {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.refreshButton:hover {
+  background-color: #45a049;
+}
+
+.refreshButton:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.expensesContainer {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.expensesTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.expensesTable th,
+.expensesTable td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+.expensesTable th:nth-child(3),
+.expensesTable td:nth-child(3) {
+  width: 100px; 
+}
+
+.expensesTable th {
+  background-color: #f8f9fa;
+  font-weight: 600;
+  color: #495057;
+  border-bottom: 2px solid #ddd;
+}
+
+.expenseRow:hover {
+  background-color: #f5f5f5;
+}
+
+.expenseCategory {
+  font-weight: 500;
+}
+
+.expenseAmount {
+  font-family: 'Courier New', monospace;
+  text-align: right;
+}
+
+.expenseDate {
+  color: #666;
+}
+
+.errorMessage {
+  background-color: #ffebee;
+  color: #c62828;
+  padding: 15px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.loading,
+.noExpenses {
+  text-align: center;
+  padding: 30px 0;
+  color: #666;
+  font-style: italic;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .expensesTable {
+    font-size: 14px;
+  }
+  
+  .expensesTable th,
+  .expensesTable td {
+    padding: 8px 10px;
+  }
+  
+  .title {
+    font-size: 1.5rem;
+  }
+}
+
+.exportDropdown {
+  margin-left: 1rem;
+  padding: 8px;
+  font-size: 1rem;
+  border-radius: 5px;
+}
+

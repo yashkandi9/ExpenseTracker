@@ -1,0 +1,38 @@
+.container {
+    padding: 2rem;
+    max-width: 900px;
+    margin: auto;
+  }
+  
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+  }
+  
+  .table th,
+  .table td {
+    border: 1px solid #ddd;
+    padding: 0.75rem;
+    text-align: center;
+  }
+  
+  .table th {
+    background-color: #f2f2f2;
+  }
+  
+  .deleteBtn {
+    margin-top: 1rem;
+    background-color: #e63946;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  .deleteBtn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
