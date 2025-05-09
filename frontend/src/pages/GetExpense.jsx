@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useAuth } from "@clerk/clerk-react";
+import axios from "axios";
 import styles from "../styles/GetExpense.module.css";
 import BackButton from "../components/backbutton";
-import { fetchExpenses } from "../services/expenseservice";
+// import { fetchExpenses } from "../services/expenseservice";
 import Papa from "papaparse";
-import { jsPDF } from "jspdf";
+import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
 
 const GetExpense = () => {
@@ -14,25 +15,25 @@ const GetExpense = () => {
   const [exportFormat, setExportFormat] = useState("");
   const { getToken } = useAuth();
 
-  useEffect(() => {
-    const getExpenses = async () => {
-      try {
-        const authToken = await getToken();
-        if (!authToken) {
-          throw new Error("Authentication failed: No token available");
-        }
+  // useEffect(() => {
+  //   const getExpenses = async () => {
+  //     try {
+  //       const authToken = await getToken();
+  //       if (!authToken) {
+  //         throw new Error("Authentication failed: No token available");
+  //       }
 
-        const data = await fetchExpenses(authToken);
-        setExpenses(Array.isArray(data) ? data : []);
-      } catch (error) {
-        setError(`Failed to fetch expenses: ${error.message}`);
-      } finally {
-        setLoading(false);
-      }
-    };
+  //       const data = await fetchExpenses(authToken);
+  //       setExpenses(Array.isArray(data) ? data : []);
+  //     } catch (error) {
+  //       setError(`Failed to fetch expenses: ${error.message}`);
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
 
-    getExpenses();
-  }, [getToken]);
+  //   getExpenses();
+  // }, [getToken]);
 
   const formatDate = (dateString) => {
     if (!dateString) return "Unknown Date";
@@ -99,24 +100,30 @@ const GetExpense = () => {
     }
   };
 
-  const refreshExpenses = async () => {
+  const loadExpenses = async () => {
     setLoading(true);
     setError(null);
-
     try {
-      const authToken = await getToken();
-      if (!authToken) {
-        throw new Error("Authentication failed: No token available");
-      }
+      const token = await getToken();
+      if (!token) throw new Error("Authentication failed: No token available");
 
-      const data = await fetchExpenses(authToken);
-      setExpenses(Array.isArray(data) ? data : []);
+      const response = await axios.get("http://localhost:8000/expenses/", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      setExpenses(Array.isArray(response.data) ? response.data : []);
     } catch (error) {
-      setError(`Failed to refresh expenses: ${error.message}`);
+      setError(`Failed to fetch expenses: ${error.message}`);
     } finally {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    loadExpenses();
+  }, [getToken]);
 
   return (
     <div className={styles.container}>
@@ -128,7 +135,7 @@ const GetExpense = () => {
 
       <div className={styles.controlPanel}>
         <button
-          onClick={refreshExpenses}
+          onClick={loadExpenses}
           disabled={loading}
           className={styles.refreshButton || ""}
         >

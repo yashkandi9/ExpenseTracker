@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useUser, useAuth } from "@clerk/clerk-react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import styles from "../styles/AddExpense.module.css";
 import BackButton from "../components/backbutton";
 
@@ -31,28 +32,19 @@ const AddExpense = () => {
     };
   
     try {
-      const res = await fetch("http://localhost:8000/expenses/", {
-        method: "POST",
+      const res = await axios.post("http://localhost:8000/expenses/", newExpense, {
         headers: {
-          "Content-Type": "application/json",
           Authorization: `Bearer ${authToken}`,
         },
-        body: JSON.stringify(newExpense),
       });
-  
-      if (!res.ok) throw new Error("Failed to add expense");
-  
-      const added = await res.json();
-      setExpenses((prev) => [...prev, added]);
-  
-  
+
+      setExpenses((prev) => [...prev, res.data]);
       alert("Expense added successfully!");
     } catch (err) {
       console.error(err);
       alert("Failed to add expense.");
     }
   };
-  
 
   const handleFileUpload = async () => {
     const authToken = await getToken();
@@ -63,25 +55,19 @@ const AddExpense = () => {
     formData.append("file", file);
 
     try {
-      const res = await fetch(
-        "http://localhost:8000/receiptscanner/scan_receipt/",
-        {
-          method: "POST",
-          headers: {
-            Authorization: `Bearer ${authToken}`,
-          },
-          body: formData,
-        }
-      );
+      const res = await axios.post("http://localhost:8000/receiptscanner/scan_receipt/", formData, {
+        headers: {
+          Authorization: `Bearer ${authToken}`,
+          "Content-Type": "multipart/form-data",
+        },
+      });
 
-      const data = await res.json();
+      const data = res.data;
 
       if (data.isReceipt) {
         setDescription(data.description || "");
         setAmount(data.amount || "");
-        setDate(
-          data.date ? new Date(data.date).toISOString().slice(0, 10) : ""
-        );
+        setDate(data.date ? new Date(data.date).toISOString().slice(0, 10) : "");
         setCategory(data.category || "Other");
         alert("Receipt scanned successfully!");
       } else {

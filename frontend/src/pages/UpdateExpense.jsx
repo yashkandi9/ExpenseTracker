@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useAuth } from "@clerk/clerk-react";
+import axios from "axios";
 import styles from "../styles/UpdateExpense.module.css";
 import BackButton from "../components/backbutton";
 
@@ -11,16 +12,16 @@ const UpdateExpense = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Fetch all expenses on mount
   useEffect(() => {
     const fetchExpenses = async () => {
       try {
         const token = await getToken();
-        const res = await fetch("http://localhost:8000/expenses/", {
-          headers: { Authorization: `Bearer ${token}` },
+        const res = await axios.get("http://localhost:8000/expenses/", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         });
-        const data = await res.json();
-        setExpenses(data);
+        setExpenses(Array.isArray(res.data) ? res.data : []);
       } catch (err) {
         setError(err.message || "Failed to fetch expenses.");
       } finally {
@@ -41,20 +42,19 @@ const UpdateExpense = () => {
   };
 
   const handleSave = async () => {
-    const token = await getToken();
     try {
-      const res = await fetch(`http://localhost:8000/expenses/${selectedId}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(editValues),
-      });
-
-      if (!res.ok) throw new Error("Failed to update expense");
-      const updated = await res.json();
-
+      const token = await getToken();
+      const res = await axios.put(
+        `http://localhost:8000/expenses/${selectedId}`,
+        editValues,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      const updated = res.data;
       setExpenses(expenses.map((e) => (e.id === selectedId ? updated : e)));
       setSelectedId(null); // Exit edit mode
     } catch (err) {

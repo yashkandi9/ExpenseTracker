@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useAuth } from "@clerk/clerk-react";
+import axios from "axios";
 import styles from "../styles/DeleteExpense.module.css";
 import BackButton from "../components/backbutton";
 
@@ -11,19 +12,16 @@ const DeleteExpense = () => {
 
   useEffect(() => {
     const fetchExpenses = async () => {
-      const token = await getToken();
-      const res = await fetch("http://localhost:8000/expenses/", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-
-      if (res.ok) {
-        const data = await res.json();
-        console.log("Fetched expenses:", data); // Debug: confirm each has an `id`
-        setExpenses(data); // This data must include `id` for each expense
-      } else {
-        console.error("Failed to fetch expenses");
+      try {
+        const token = await getToken();
+        const res = await axios.get("http://localhost:8000/expenses/", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        setExpenses(res.data);
+      } catch (err) {
+        console.error("Failed to fetch expenses:", err);
       }
     };
 
@@ -53,29 +51,26 @@ const DeleteExpense = () => {
       alert("Please select at least one expense to delete.");
       return;
     }
-  
+
     setLoading(true);
-  
+
     try {
       const token = await getToken();
-  
-      // Loop over selected expenses and delete them one by one
-      for (const id of selectedIds) {
-        const response = await fetch(`http://localhost:8000/expenses/${id}`, {
-          method: "DELETE",
-          headers: {
-            Authorization: `Bearer ${token}`, // send token for authentication
-          },
-        });
-  
-        if (!response.ok) {
-          throw new Error(`Failed to delete expense with ID: ${id}`);
-        }
-      }
-  
-      // After successful deletion, update the frontend list
+
+      // Delete all selected expenses in parallel
+      await Promise.all(
+        selectedIds.map((id) =>
+          axios.delete(`http://localhost:8000/expenses/${id}`, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          })
+        )
+      );
+
+      // Update UI after deletion
       setExpenses((prev) => prev.filter((e) => !selectedIds.includes(e.id)));
-      setSelectedIds([]); // clear selected ids
+      setSelectedIds([]);
       alert("Selected expenses deleted.");
     } catch (err) {
       console.error("Failed to delete:", err);

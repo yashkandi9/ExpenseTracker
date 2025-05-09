@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import ExpenseChart from "../components/ExpenseChart";
 // import TotalSpending from "../components/TotalSpending";
@@ -7,9 +7,18 @@ import AddExpenseButton from "../components/AddExpenseButton";
 import styles from "../styles/ExpenseManager.module.css";
 import BackButton from "../components/backbutton";
 import DeleteExpenseButton from "../components/DeleteExpenseButton";
+import { useAuth } from "@clerk/clerk-react";
+
 
 const ExpenseManager = () => {
   const navigate = useNavigate();
+  const { isSignedIn } = useAuth();
+
+  useEffect(() => {
+    if (!isSignedIn) {
+      navigate("/sign-in");
+    }
+  }, [isSignedIn, navigate]);
 
   const handleGetExpenses = () => {
     navigate("/get-expense");
