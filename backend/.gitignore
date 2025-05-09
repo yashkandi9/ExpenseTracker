@@ -1,0 +1,52 @@
+# --- Python / FastAPI backend ---
+venv/
+__pycache__/
+*.py[cod]
+*.sqlite3
+*.log
+instance/
+.env
+.env.*
+
+# SQLAlchemy / Alembic
+migrations/
+alembic.ini
+
+# Local SQLite DBs or backups
+*.db
+*.db-journal
+
+# Pytest / Coverage
+.cache/
+.coverage
+htmlcov/
+.pytest_cache/
+
+# --- Node.js / React frontend ---
+node_modules/
+dist/
+build/
+.env.local
+.env.development
+.env.production
+.vite/
+
+# Clerk Auth cache (if any)
+.clerk/
+
+# --- OS / Editor files ---
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*.bak
+*.tmp
+
+# VSCode / JetBrains IDEs
+.vscode/
+.idea/
+
+# --- Git ---
+# prevent committing private keys or auth files
+*.pem
+*.key
